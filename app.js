@@ -6,16 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var sql = require("mssql");
 
 var app = express();
 
-var config = {
-  user: ' garys_gang_admin',
-  password: 'jSa$B1A8okF47DdMh4&wI2kN%PfWTy',
-  server: 'garys-gang.database.windows.net', 
-  database: 'valorant' 
-};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
