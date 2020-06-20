@@ -1,5 +1,4 @@
 var express = require('express');
-const app = require('../app');
 var router = express.Router();
 
 /* GET home page. */
@@ -11,7 +10,8 @@ router.get('/valorant', function(req, res, next) {
   res.render('valorant');
 });
 
-
-
+router.get('/valorant?get-players',function(req, res, next) {
+  
+});
 
 module.exports = router;
