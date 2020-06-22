@@ -34,6 +34,7 @@ async function getallplayers() {
         connection.execSql(request);
 
         request.on("row", columns => {
+          console.log('row get')
           columns.forEach(column => {
             dbPlayers.push(column.value);
           });
