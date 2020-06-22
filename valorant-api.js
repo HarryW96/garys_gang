@@ -27,7 +27,7 @@ async function getallplayers() {
             } else {
               //it works
               console.log(`${rowCount} row(s) returned`);
-              return dbPlayers;
+              res(dbPlayers);
             }
           }
         )
@@ -40,7 +40,6 @@ async function getallplayers() {
           });
         });
 
-        request.on('done', () => res(dbPlayers))
       }
     })
   })
