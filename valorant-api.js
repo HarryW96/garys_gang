@@ -5,12 +5,11 @@ var bodyParser = require('body-parser');
 var http = require('http');
 const sqlSettings = require('./sql');
 const sql = require('mssql')
-var dbPlayers = [];
+const dataFormatter = require('./data-formatter');
+var dbPlayers = {};
 
 async function getallplayers() {
   return new Promise((res) => {
-
-
     console.log("getallplayers")
     connection = sqlSettings.returnConnection();
     dbPlayers = [];
@@ -20,7 +19,7 @@ async function getallplayers() {
         console.error(err.message);
       } else {
         const request = new Request(
-          "SELECT discordName as PlayerName FROM Player",
+          "SELECT discordName as PlayerName FROM Player ORDER BY discordName ASC",
           (err, rowCount) => {
             if (err) {
               console.error(err.message);
@@ -45,5 +44,55 @@ async function getallplayers() {
   })
 }
 
+async function getPlayerOverview(){
+return new Promise((res) => {
+  console.log("getPlayerOverview")
+  connection = sqlSettings.returnConnection();
+  playerOverview = [];
+
+  connection.on("connect", err => {
+    if (err) {
+      console.error(err.message);
+    } else {
+      const request = new Request(
+        "SELECT discordName, MAX(combatScore) AS Max, MIN(combatScore) AS Min, AVG(combatScore) AS Average, COUNT(combatScore) AS 'Games' FROM PlayerScore GROUP BY discordName ORDER BY AVG(combatScore) desc",
+        (err, rowCount) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            //it works
+            console.log(`${rowCount} row(s) returned`);
+            res(playerOverview);
+          }
+        }
+      )
+      connection.execSql(request);
+      count = 1;
+      request.on("row", columns => {
+        console.log('row get')
+        newPlayer = {};
+        columns.forEach(column => {
+          newPlayer[column.metadata.colName] = column.value;
+
+          //Make a clean name for css class
+          if(column.metadata.colName == "discordName"){
+            newPlayer["clean-name"] = dataFormatter.returnCleanUsername(column.value);
+          }
+
+          //Work out position
+            newPlayer["position"] = count;
+        });
+        playerOverview.push(newPlayer);
+        count += 1;
+      });
+    }
+  })
+})
+
+
+
+}
+
 
 exports.getallplayers = getallplayers;
+exports.getPlayerOverview = getPlayerOverview;

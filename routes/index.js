@@ -9,10 +9,17 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Home' });
 });
 
-router.get('/valorant', async function (req, res, next) {
+router.get('/valorant', function (req, res, next) {
   console.log("valorant from index router");
-  newplayers = await valorantAPI.getallplayers();
-  res.render('valorant', { title: 'Valorant', players: newplayers })
+  valorantAPI.getallplayers().then(function (storedplayers) {
+    valorantAPI.getPlayerOverview().then(function (overview){
+      console.log(JSON.stringify(overview));
+      res.render('valorant', { title: 'Valorant', players: storedplayers, playerOverview: overview })
+    })
+  })
+
+
+
 
 });
 

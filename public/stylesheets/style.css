@@ -13,4 +13,23 @@ a {
 
 .valorant-new-game{
   text-align: center;
+  margin-left: 25%;
+}
+
+
+/* Custom Fonts per Person */
+.JamalaBear{
+  font-family: 'Staatliches', cursive;
+}
+
+.Casper{
+  font-family: 'Roboto', sans-serif;
+}
+
+.WSNatu{
+  font-family: 'Carter One', cursive;
+}
+
+.Nemsley{
+  font-family: 'Acme', sans-serif;
 }

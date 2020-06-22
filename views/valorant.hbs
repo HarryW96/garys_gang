@@ -1,9 +1,28 @@
 <h1>Valorant Home</h1>
 <div class="row">
-    <div class="col s6 valorant-info">
+    <div class="col s6">
+        <div class="carousel">
+            {{#each playerOverview}}
+            <a class="carousel-item">
+                <div class="card pink lighten-3">
+                    <div class="card-content black-text">
+                        <span class="card-title {{this.clean-name}}">{{this.discordName}} ({{this.position}}) </span>
+                        Max: {{this.Max}}
+                        <p></p>
+                        Min: {{this.Min}}
+                        <p></p>
+                        Average: <B>{{this.Average}}</B>
+                        <p></p>
+                        Games Played: {{this.Games}}
+                    </div>
+                </div>
+            </a>
+            {{/each}}
+        </div>
     </div>
     <div class="col s6">
-        <a class="waves-effect waves-light btn-large valorant-new-game"><i class="material-icons left">videogame_asset</i>New Game</a>
+        <a class="waves-effect waves-light btn-large valorant-new-game"><i
+                class="material-icons left">videogame_asset</i>New Game</a>
         <div class="row">
             <div class="col s6">
                 <label>
@@ -13,21 +32,41 @@
             </div>
             <div class="col s6">
                 <label>
-                    <input name="game-type" type="radio"/>
+                    <input name="game-type" type="radio" />
                     <span>Online Game</span>
                 </label>
             </div>
         </div>
         <div class="row">
-            <div class="col s6">
-            {{#each players}}
-                <label>
-                     <input type="checkbox" class="filled-in" checked="checked" />
-                     <span>{{this}}</span>
-                </label>
-            {{/each}}
-            <label>
-      </label>
-      </div>
+            <label class="col s12">
+                <input type="checkbox" class="filled-in" />
+                <span>Create teams for me</span>
+            </label>
         </div>
+        <div class="row">
+            Please select players:
+            <div class="row">
+                {{#each players}}
+                <label class="col s6">
+                    <input type="checkbox" name={{sthis}} class="filled-in" />
+                    <span>{{this}}</span>
+                </label>
+                {{/each}}
+                <label>
+                </label>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('.carousel').carousel();
+    });
+
+    $("input[type='radio']").click(function () {
+        var radioValue = $("input[name='game-type-custom']:checked").val();
+        if(radioValue == "on"){
+            console.log("custom game");
+        }
+    });
+</script>
