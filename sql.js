@@ -21,3 +21,7 @@ function returnConnection(){
   return connection;
 };
 
+exports.returnConnection = returnConnection;
+
+
+

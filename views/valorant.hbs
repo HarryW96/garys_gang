@@ -1,7 +1,6 @@
-<h1>Valorant Home </h1>
+<h1>Valorant Home</h1>
 <div class="row">
     <div class="col s6 valorant-info">
-        Left
     </div>
     <div class="col s6">
         <a class="waves-effect waves-light btn-large valorant-new-game"><i class="material-icons left">videogame_asset</i>New Game</a>
@@ -19,5 +18,16 @@
                 </label>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col s6">
+            {{#each players}}
+                <label>
+                     <input type="checkbox" class="filled-in" checked="checked" />
+                     <span>{{this}}</span>
+                </label>
+            {{/each}}
+            <label>
+      </label>
+      </div>
+        </div>
 </div>

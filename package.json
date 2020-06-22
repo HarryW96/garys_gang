@@ -15,5 +15,6 @@
     "morgan": "~1.9.1",
     "mssql": "^6.2.0",
     "tedious": "^8.3.0"
-  }
+  },
+  "devDependencies": {}
 }
