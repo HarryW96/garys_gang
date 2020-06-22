@@ -8,36 +8,41 @@ const sql = require('mssql')
 var dbPlayers = [];
 
 async function getallplayers() {
-  console.log("getallplayers")
-  connection = sqlSettings.returnConnection();
-  dbPlayers = [];
+  return new Promise((res) => {
 
-  connection.on("connect", err => {
-    if (err) {
-      console.error(err.message);
-    } else {
-      const request = new Request(
-        "SELECT discordName as PlayerName FROM Player",
-        (err, rowCount) => {
-          if (err) {
-            console.error(err.message);
-          } else {
-            //it works
-            console.log(`${rowCount} row(s) returned`);
-            return dbPlayers;
+
+    console.log("getallplayers")
+    connection = sqlSettings.returnConnection();
+    dbPlayers = [];
+
+    connection.on("connect", err => {
+      if (err) {
+        console.error(err.message);
+      } else {
+        const request = new Request(
+          "SELECT discordName as PlayerName FROM Player",
+          (err, rowCount) => {
+            if (err) {
+              console.error(err.message);
+            } else {
+              //it works
+              console.log(`${rowCount} row(s) returned`);
+              return dbPlayers;
+            }
           }
-        }
-      )
-      connection.execSql(request);
+        )
+        connection.execSql(request);
 
-      request.on("row", columns => {
-        columns.forEach(column => {
-          dbPlayers.push(column.value);
+        request.on("row", columns => {
+          columns.forEach(column => {
+            dbPlayers.push(column.value);
+          });
         });
-      });
-    }
+
+        request.on('done', () => res(dbPlayers))
+      }
+    })
   })
-  
 }
 
 
