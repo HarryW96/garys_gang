@@ -21,6 +21,7 @@
         </div>
     </div>
     <div class="col s6">
+        <form>
         <a class="waves-effect waves-light btn-large valorant-new-game"><i
                 class="material-icons left">videogame_asset</i>New Game</a>
         <div class="row">
@@ -56,6 +57,12 @@
                 </label>
             </div>
         </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Start Game
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+        </form>
     </div>
 </div>
 <script>
@@ -65,8 +72,12 @@
 
     $("input[type='radio']").click(function () {
         var radioValue = $("input[name='game-type-custom']:checked").val();
-        if(radioValue == "on"){
+        if (radioValue == "on") {
             console.log("custom game");
         }
+    });
+
+    $("button[type='submit']").click(function(){
+        console.log("submit clicked");
     });
 </script>
