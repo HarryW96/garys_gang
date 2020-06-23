@@ -33,3 +33,30 @@ a {
 .Nemsley{
   font-family: 'Acme', sans-serif;
 }
+
+.WSLuna{
+  font-family: 'Freckle Face', cursive;
+}
+
+.Nova{
+  font-family: 'Lacquer', cursive;
+}
+
+.Grogolog{
+  font-family: 'Faster One', cursive;
+}
+
+.JustTheLetterB{
+  font-family: 'Mansalva', cursive;
+}
+
+.valorant .carousel {
+  height: 200px;
+}
+.carousel .card-title{
+  text-align: center;
+}
+
+.card .card-content {
+  padding: 10px;
+}

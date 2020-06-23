@@ -1,19 +1,21 @@
 <h1>Valorant Home</h1>
-<div class="row">
+<div class="row valorant">
     <div class="col s6">
         <div class="carousel">
             {{#each playerOverview}}
             <a class="carousel-item">
                 <div class="card pink lighten-3">
                     <div class="card-content black-text">
-                        <span class="card-title {{this.clean-name}}">{{this.discordName}} ({{this.position}}) </span>
-                        Max: {{this.Max}}
-                        <p></p>
-                        Min: {{this.Min}}
+                        <span class="card-title {{this.clean-name}}">{{this.discordName}}  </span>
+                        Position: <b>{{this.position}}</b>
                         <p></p>
                         Average: <B>{{this.Average}}</B>
                         <p></p>
-                        Games Played: {{this.Games}}
+                        Max: <b>{{this.Max}}</b>
+                        <p></p>
+                        Min: <b>{{this.Min}}</b>
+                        <p></p>
+                        Games Played: <b>{{this.Games}}</b>
                     </div>
                 </div>
             </a>
@@ -21,47 +23,47 @@
         </div>
     </div>
     <div class="col s6">
-        <form>
-        <a class="waves-effect waves-light btn-large valorant-new-game"><i
-                class="material-icons left">videogame_asset</i>New Game</a>
-        <div class="row">
-            <div class="col s6">
-                <label>
-                    <input name="game-type" type="radio" checked />
-                    <span>Custom Game</span>
-                </label>
-            </div>
-            <div class="col s6">
-                <label>
-                    <input name="game-type" type="radio" />
-                    <span>Online Game</span>
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <label class="col s12">
-                <input type="checkbox" class="filled-in" />
-                <span>Create teams for me</span>
-            </label>
-        </div>
-        <div class="row">
-            Please select players:
+        <form onsubmit="createNewGame()">
+            <a class="waves-effect waves-light btn-large valorant-new-game"><i
+                    class="material-icons left">videogame_asset</i>New Game</a>
             <div class="row">
-                {{#each players}}
-                <label class="col s6">
-                    <input type="checkbox" name={{sthis}} class="filled-in" />
-                    <span>{{this}}</span>
-                </label>
-                {{/each}}
-                <label>
+                <div class="col s6">
+                    <label>
+                        <input name="game-type" type="radio" checked />
+                        <span>Custom Game</span>
+                    </label>
+                </div>
+                <div class="col s6">
+                    <label>
+                        <input name="game-type" type="radio" />
+                        <span>Online Game</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col s12">
+                    <input type="checkbox" class="filled-in" />
+                    <span>Create teams for me</span>
                 </label>
             </div>
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Start Game
-                <i class="material-icons right">send</i>
-            </button>
-        </div>
+            <div class="row">
+                Please select players:
+                <div class="row">
+                    {{#each players}}
+                    <label class="col s6">
+                        <input type="checkbox" name={{sthis}} class="filled-in" />
+                        <span>{{this}}</span>
+                    </label>
+                    {{/each}}
+                    <label>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Start Game
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
         </form>
     </div>
 </div>
@@ -77,7 +79,8 @@
         }
     });
 
-    $("button[type='submit']").click(function(){
+    function createNewGame() {
         console.log("submit clicked");
-    });
+    }
+
 </script>

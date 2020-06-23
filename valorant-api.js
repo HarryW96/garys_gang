@@ -80,7 +80,7 @@ return new Promise((res) => {
           }
 
           //Work out position
-            newPlayer["position"] = count;
+            newPlayer["position"] = dataFormatter.ordinal_suffix_of(count);
         });
         playerOverview.push(newPlayer);
         count += 1;
