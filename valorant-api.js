@@ -33,7 +33,6 @@ async function getallplayers() {
         connection.execSql(request);
 
         request.on("row", columns => {
-          console.log('row get')
           columns.forEach(column => {
             dbPlayers.push(column.value);
           });
@@ -69,7 +68,6 @@ return new Promise((res) => {
       connection.execSql(request);
       count = 1;
       request.on("row", columns => {
-        console.log('row get')
         newPlayer = {};
         columns.forEach(column => {
           newPlayer[column.metadata.colName] = column.value;

@@ -3,6 +3,7 @@ function returnCleanUsername(username){
     clean = clean.replace(/[^\w\s]/gi, '');
     return clean;
 }
+
 function ordinal_suffix_of(i) {
     var j = i % 10,
         k = i % 100;

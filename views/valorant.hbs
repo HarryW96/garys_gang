@@ -6,7 +6,7 @@
             <a class="carousel-item">
                 <div class="card pink lighten-3">
                     <div class="card-content black-text">
-                        <span class="card-title {{this.clean-name}}">{{this.discordName}}  </span>
+                        <span class="card-title {{this.clean-name}}">{{this.discordName}} </span>
                         Position: <b>{{this.position}}</b>
                         <p></p>
                         Average: <B>{{this.Average}}</B>
@@ -22,45 +22,50 @@
             {{/each}}
         </div>
     </div>
-    <div class="col s6">
-        <form onsubmit="createNewGame()">
-            <a class="waves-effect waves-light btn-large valorant-new-game"><i
-                    class="material-icons left">videogame_asset</i>New Game</a>
+    <div class="col s6 new-game">
+        <form id="newGame">
             <div class="row">
-                <div class="col s6">
-                    <label>
-                        <input name="game-type" type="radio" checked />
-                        <span>Custom Game</span>
-                    </label>
-                </div>
-                <div class="col s6">
-                    <label>
-                        <input name="game-type" type="radio" />
-                        <span>Online Game</span>
-                    </label>
+                <div class="col s12">
+                    <a class="waves-effect waves-light btn-large valorant-new-game"><i
+                            class="material-icons left">videogame_asset</i>New Game</a>
                 </div>
             </div>
             <div class="row">
-                <label class="col s12">
+                <div class="col s12">
+                    <div class="switch valorant-form-centre" id="game-type">
+                        <label>
+                            Custom Game
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                            Online Game
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <label class="col s12 valorant-form-centre">
                     <input type="checkbox" class="filled-in" />
                     <span>Create teams for me</span>
                 </label>
             </div>
             <div class="row">
-                Please select players:
-                <div class="row">
-                    {{#each players}}
-                    <label class="col s6">
-                        <input type="checkbox" name={{sthis}} class="filled-in" />
-                        <span>{{this}}</span>
-                    </label>
-                    {{/each}}
-                    <label>
-                    </label>
+                <div class="col s12">
+                    Please select players:
                 </div>
             </div>
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Start Game
+                {{#each players}}
+                <label class="col s6">
+                    <input type="checkbox" name={{this}} class="filled-in" />
+                    <span>{{this}}</span>
+                </label>
+                {{/each}}
+                <label>
+                </label>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light start-valorant-game" type="submit" name="action">Start Game
                     <i class="material-icons right">send</i>
                 </button>
             </div>
@@ -68,19 +73,14 @@
     </div>
 </div>
 <script>
+    //Set up carousel
     $(document).ready(function () {
         $('.carousel').carousel();
     });
 
-    $("input[type='radio']").click(function () {
-        var radioValue = $("input[name='game-type-custom']:checked").val();
-        if (radioValue == "on") {
-            console.log("custom game");
-        }
+    $(document).on("submit", "#newGame", function () {
+        let gameType = $('#game-type').prop('checked');
+        console.log(gameType);
+        alert(gameType);
     });
-
-    function createNewGame() {
-        console.log("submit clicked");
-    }
-
 </script>

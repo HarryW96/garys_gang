@@ -11,11 +11,17 @@ a {
   background-color: #E6B6D0;
 }
 
+.start-valorant-game,
 .valorant-new-game{
+  margin-top: 10px;
   text-align: center;
   margin-left: 25%;
+  width: 50%;
 }
 
+.valorant-form-centre{
+  text-align: center;
+}
 
 /* Custom Fonts per Person */
 .JamalaBear{
@@ -59,4 +65,8 @@ a {
 
 .card .card-content {
   padding: 10px;
+}
+
+.new-game{
+  background-color: #FFB6C1
 }
