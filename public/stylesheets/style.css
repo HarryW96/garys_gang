@@ -1,0 +1,72 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.valorant-info {
+  background-color: #E6B6D0;
+}
+
+.start-valorant-game,
+.valorant-new-game{
+  margin-top: 10px;
+  text-align: center;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.valorant-form-centre{
+  text-align: center;
+}
+
+/* Custom Fonts per Person */
+.JamalaBear{
+  font-family: 'Staatliches', cursive;
+}
+
+.Casper{
+  font-family: 'Roboto', sans-serif;
+}
+
+.WSNatu{
+  font-family: 'Carter One', cursive;
+}
+
+.Nemsley{
+  font-family: 'Acme', sans-serif;
+}
+
+.WSLuna{
+  font-family: 'Freckle Face', cursive;
+}
+
+.Nova{
+  font-family: 'Lacquer', cursive;
+}
+
+.Grogolog{
+  font-family: 'Faster One', cursive;
+}
+
+.JustTheLetterB{
+  font-family: 'Mansalva', cursive;
+}
+
+.valorant .carousel {
+  height: 200px;
+}
+.carousel .card-title{
+  text-align: center;
+}
+
+.card .card-content {
+  padding: 10px;
+}
+
+.new-game{
+  background-color: #FFB6C1
+}

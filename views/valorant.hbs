@@ -1,0 +1,86 @@
+<h1>Valorant Home</h1>
+<div class="row valorant">
+    <div class="col s6">
+        <div class="carousel">
+            {{#each playerOverview}}
+            <a class="carousel-item">
+                <div class="card pink lighten-3">
+                    <div class="card-content black-text">
+                        <span class="card-title {{this.clean-name}}">{{this.discordName}} </span>
+                        Position: <b>{{this.position}}</b>
+                        <p></p>
+                        Average: <B>{{this.Average}}</B>
+                        <p></p>
+                        Max: <b>{{this.Max}}</b>
+                        <p></p>
+                        Min: <b>{{this.Min}}</b>
+                        <p></p>
+                        Games Played: <b>{{this.Games}}</b>
+                    </div>
+                </div>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+    <div class="col s6 new-game">
+        <form id="newGame">
+            <div class="row">
+                <div class="col s12">
+                    <a class="waves-effect waves-light btn-large valorant-new-game"><i
+                            class="material-icons left">videogame_asset</i>New Game</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="switch valorant-form-centre" id="game-type">
+                        <label>
+                            Custom Game
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                            Online Game
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <label class="col s12 valorant-form-centre">
+                    <input type="checkbox" class="filled-in" />
+                    <span>Create teams for me</span>
+                </label>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    Please select players:
+                </div>
+            </div>
+            <div class="row">
+                {{#each players}}
+                <label class="col s6">
+                    <input type="checkbox" name={{this}} class="filled-in" />
+                    <span>{{this}}</span>
+                </label>
+                {{/each}}
+                <label>
+                </label>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light start-valorant-game" type="submit" name="action">Start Game
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    //Set up carousel
+    $(document).ready(function () {
+        $('.carousel').carousel();
+    });
+
+    $(document).on("submit", "#newGame", function () {
+        let gameType = $('#game-type').prop('checked');
+        console.log(gameType);
+        alert(gameType);
+    });
+</script>
